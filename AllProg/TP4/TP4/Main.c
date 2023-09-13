@@ -1,16 +1,14 @@
-/*
-	Connecting
-*/
-
+// @AsherLucRen
+// Estabelecimento da conexão com o banco de dados
+// ==========================================================
 #include <stdio.h>
 #include "sqlite3.h"
 
-int main(int argc, char* argv[])
+// ==========================================================
+// Cria conexão com banco de dados
+// ==========================================================
+int conectarAoBanco(sqlite3 *db, char *zErrMsg, int rc)
 {
-	sqlite3 *db;
-	char *zErrMsg = 0;
-	int rc;
-
 	rc = sqlite3_open("test.db", &db);
 
 	if (rc) 
@@ -26,4 +24,18 @@ int main(int argc, char* argv[])
 	sqlite3_close(db);
 
 	return 0;
+}
+
+
+int main(int argc, char* argv[])
+{
+	// Você pode chamar o método para criar a conexão
+	// ou criar manualmente sua conexão
+
+	sqlite3 *db;		// Ponteiro para memória onde está o banco de dados
+	char *zErrMsg = 0;	// ?
+	int rc;				// 
+	
+	conectarAoBanco(db, zErrMsg, rc);
+	
 }
